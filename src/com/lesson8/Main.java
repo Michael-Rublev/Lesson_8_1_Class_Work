@@ -6,23 +6,42 @@ public class Main {
     // работать , для построения более сложных систем
     public static void main(String[] args) {
         Hotel tourist = new Hotel();
-        tourist.nameHotel = "Турист";
+        tourist.id = 1;
+        tourist.name = "Турист";
         tourist.singleRooms = 10;
         tourist.doubleRooms = 30;
 
-    //    System.out.println(tourist.nameHotel + ": " + tourist.getCapacity());
-
         Hotel hilton = new Hotel();
-        hilton.nameHotel = "Hilton";
+        hilton.id = 2;
+        hilton.name = "Хилтон";
         hilton.singleRooms = 100;
         hilton.doubleRooms = 100;
 
-    //    System.out.println(hilton.nameHotel + ": " + hilton.getCapacity());
+        House jacks = new House();
+        jacks.id = 15;
+        jacks.ownersName = "Jacks";
+        jacks.bedrooms = 10;
 
-        Hotel[] allHotels = new Hotel[] {tourist, hilton};
-        Accomodation acc = new Accomodation();
-        acc.hotels = allHotels;
+        Prison singSing = new Prison();
+        singSing.id = 33;
+        singSing.cells = 100;
 
-        System.out.println(acc.totalCapacity());
+
+//        Hotel[] allHotels = new Hotel[] {tourist, hilton};
+
+        Accomodation accomodation = new Accomodation();
+        accomodation.housings = new Housing[]{tourist, hilton, jacks, singSing};
+
+        accomodation.printAll();
+
+        System.out.println(accomodation.findForGroup(100).getPritnable());
+        System.out.println(accomodation.findForGroup(30).getPritnable());
+
+        Housing hotel = accomodation.findForGroup(2001);
+        if (hotel != null) {
+            System.out.println(hotel.getPritnable());
+        } else {
+            System.out.println("Nothing found");
+        }
     }
 }

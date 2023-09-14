@@ -1,7 +1,7 @@
 package com.lesson8;
 
-public class Hotel {
-    String nameHotel;
+public class Hotel extends Housing {
+    String name;
     int singleRooms;
     int doubleRooms;
 
@@ -9,4 +9,7 @@ public class Hotel {
         return singleRooms + doubleRooms * 2;
     }
 
+    public String getPritnable() {
+        return id + "::" +  "Hotel " + name + " я могу вместить: " + getCapacity();
+    }
 }
